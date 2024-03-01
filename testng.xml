@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/rushi/projects/projects/KlaarAssignment">
+        <classes>
+            <class name="Klaar.User">
+                <methods>
+                    <include name="userCustomFields"/>
+                    <include name="customFieldsList"/>
+                </methods>
+            </class>
+            <class name="Klaar.WorkSpace">
+                <methods>
+                    <include name="workSpaceSetting"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
