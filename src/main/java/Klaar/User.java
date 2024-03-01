@@ -62,7 +62,6 @@ public class User extends Utility {
             findElementMethod(objRepo.anotherList).click();
             findElementMethod(objRepo.optionListDataType).sendKeys("24/10/09");
             findElementMethod(objRepo.customFieldSubmitButton).click();
-            driver.manage().deleteAllCookies();
             driver.quit();
         } catch (Exception e) {
             System.out.println(e.getMessage());

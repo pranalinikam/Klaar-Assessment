@@ -37,7 +37,6 @@ public class WorkSpace extends Utility {
             findElementMethod(objRepo.deleteLogoButton).click();
             findElementMethod(objRepo.deleteConfirmButton).click();
             driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(20));
-            driver.manage().deleteAllCookies();
             driver.quit();
         } catch (Exception e) {
             System.out.println(e.getMessage());

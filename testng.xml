@@ -3,15 +3,15 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/rushi/projects/projects/KlaarAssignment">
         <classes>
+            <class name="Klaar.WorkSpace">
+                <methods>
+                    <include name="workSpaceSetting"/>
+                </methods>
+            </class>
             <class name="Klaar.User">
                 <methods>
                     <include name="userCustomFields"/>
                     <include name="customFieldsList"/>
-                </methods>
-            </class>
-            <class name="Klaar.WorkSpace">
-                <methods>
-                    <include name="workSpaceSetting"/>
                 </methods>
             </class>
         </classes>
