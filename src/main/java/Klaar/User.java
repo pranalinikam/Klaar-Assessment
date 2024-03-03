@@ -37,7 +37,10 @@ public class User extends Utility {
                 }
             }
             if (insertedElementIndex != -1) {
-                WebElement deleteDisplayName = list.findElement(By.xpath("//tr[" + ++insertedElementIndex + "]//td[4]//div[2]"));
+                WebElement toggleEnabled = list.findElement(By.xpath("//tr[" + ++insertedElementIndex + "]//td[3]//button"));
+                toggleEnabled.click();
+                toggleEnabled.click();
+                WebElement deleteDisplayName = list.findElement(By.xpath("//tr[" + insertedElementIndex + "]//td[4]//div[2]"));
                 deleteDisplayName.click();
             }
         } catch (Exception e) {
@@ -48,10 +51,11 @@ public class User extends Utility {
     @Test(priority = 2)
     public void customFieldsList() {
         try {
+            String displayName = "Future Date File Test";
             findElementMethod(objRepo.userList).click();
             findElementMethod(objRepo.customFields).click();
             findElementMethod(objRepo.addFields).click();
-            findElementMethod(objRepo.fieldName).sendKeys("Today's Date for File Test");
+            findElementMethod(objRepo.fieldName).sendKeys(displayName);
             findElementMethod(objRepo.fieldDataType).click();
             WebElement dataType = driver.findElement(objRepo.dataTypeDropDown);
             List<WebElement> listDataType = dataType.findElements(objRepo.listOfFieldType);
@@ -62,11 +66,30 @@ public class User extends Utility {
             findElementMethod(objRepo.anotherList).click();
             findElementMethod(objRepo.optionListDataType).sendKeys("24/10/09");
             findElementMethod(objRepo.customFieldSubmitButton).click();
+
+            WebElement list = driver.findElement(objRepo.listOfCustomFields);
+            List<WebElement> listDisplayName = list.findElements(objRepo.listOfCustomFieldName);
+            int insertedElementIndex = -1;
+            for (int i = 0; i < listDisplayName.size(); i++) {
+                String displayNameItems = listDisplayName.get(i).getText();
+                if (displayNameItems.contains(displayName)) {
+                    insertedElementIndex = i;
+                    Assert.assertEquals(displayNameItems, displayName);
+                    break;
+                }
+            }
+            if (insertedElementIndex != -1) {
+                WebElement toggleEnabled = list.findElement(By.xpath("//tr[" + ++insertedElementIndex + "]//td[3]//button"));
+                toggleEnabled.click();
+                toggleEnabled.click();
+                WebElement deleteDisplayName = list.findElement(By.xpath("//tr[" + insertedElementIndex + "]//td[4]//div[2]"));
+                deleteDisplayName.click();
+            }
+
+            new Util().isPageRefreshed(driver);
             driver.quit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
     }
-
 }
